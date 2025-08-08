@@ -10,7 +10,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="HospitalAutomationSystem" value="5cc2dbd1-ddc5-49c1-a328-2096a07cb556" />
-          <factory-entry name="entityManagerFactory" />
+          <factory-entry name="entityManagerFactory" value="5cc2dbd1-ddc5-49c1-a328-2096a07cb556" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

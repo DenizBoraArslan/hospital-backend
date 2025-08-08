@@ -1,17 +1,14 @@
-package com.db.repository;
+package com.db.service.interfaces;
 
 import com.db.enums.Department;
 import com.db.enums.Gender;
 import com.db.enums.Role;
 import com.db.models.Employee;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+public interface IEmployeeService {
 
     Optional<Employee> findById(long id);
     List<Employee> findByEmployeeFirstName(String employeeFirstName);
@@ -20,5 +17,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findByDepartment(Department department);
     List<Employee> findByGender(Gender gender);
     List<Employee> findEmployeeByRole(Role role);
+
 
 }

@@ -2,6 +2,7 @@ package com.db.models;
 
 import com.db.enums.Department;
 import com.db.enums.Gender;
+import com.db.enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,6 +26,9 @@ public class Employee extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Department department;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

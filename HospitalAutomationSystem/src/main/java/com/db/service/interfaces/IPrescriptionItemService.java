@@ -1,15 +1,11 @@
-package com.db.repository;
+package com.db.service.interfaces;
 
 import com.db.models.PrescriptionItem;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface IPrescriptionItemRepository extends JpaRepository<PrescriptionItem, Long> {
+public interface IPrescriptionItemService {
 
     Optional<PrescriptionItem> findPrescriptionItemById(Long id);
     List<PrescriptionItem> findPrescriptionItemByMedicineName(String medicineName);

@@ -1,16 +1,13 @@
-package com.db.repository;
+package com.db.service.interfaces;
 
 import com.db.enums.Gender;
 import com.db.models.Patient;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface IPatientRepository extends JpaRepository<Patient, Long> {
+public interface IPatientService {
 
     Optional<Patient> findById(long id);
     List<Patient> findByPatientFirstName(String patientFirstName);
