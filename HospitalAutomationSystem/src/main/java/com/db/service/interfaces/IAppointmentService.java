@@ -8,11 +8,12 @@ import java.util.List;
 
 public interface IAppointmentService {
 
-    List<Appointment> findByPatientId(Long patientId);
-    List<Appointment> findByDoctorId(Long doctorId);
-    List<Appointment> findByAppointmentDate(LocalDate appointmentDate);
-    List<Appointment> findByStatus(AppointmentStatus status);
-
-
-
+    List<Appointment> findAppointmentByPatientId(Long patientId);
+    List<Appointment> findAppointmentByDoctorId(Long doctorId);
+    List<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate);
+    List<Appointment> findAppointmentByStatus(AppointmentStatus status);
+    List<Appointment> findAllAppointments();
+    Appointment saveAppointment(Appointment appointment);
+    public void deleteAppointment(Long appointmentId);
+    public Appointment updateAppointment(Appointment appointment);
 }

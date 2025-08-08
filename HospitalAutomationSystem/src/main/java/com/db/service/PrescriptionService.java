@@ -7,11 +7,13 @@ import com.db.models.PrescriptionItem;
 import com.db.repository.IPrescriptionItemRepository;
 import com.db.repository.IPrescriptionRepository;
 import com.db.service.interfaces.IPrescriptionService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PrescriptionService implements IPrescriptionService {
 
    private IPrescriptionRepository prescriptionRepository ;

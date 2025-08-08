@@ -5,10 +5,12 @@ import com.db.enums.Gender;
 import com.db.models.Doctor;
 import com.db.repository.IDoctorRepository;
 import com.db.service.interfaces.IDoctorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DoctorService implements IDoctorService {
 
     private IDoctorRepository doctorRepository;

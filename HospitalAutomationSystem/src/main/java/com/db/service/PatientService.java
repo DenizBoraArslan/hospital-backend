@@ -5,11 +5,13 @@ import com.db.models.Patient;
 import com.db.repository.IAppointmentRepository;
 import com.db.repository.IPatientRepository;
 import com.db.service.interfaces.IPatientService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PatientService implements IPatientService {
 
     private IPatientRepository patientRepository;

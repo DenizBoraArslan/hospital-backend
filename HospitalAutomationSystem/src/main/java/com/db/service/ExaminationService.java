@@ -4,11 +4,13 @@ import com.db.models.Appointment;
 import com.db.models.Examination;
 import com.db.repository.IExaminationRepository;
 import com.db.service.interfaces.IExaminationService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ExaminationService implements IExaminationService {
 
     private IExaminationRepository examinationRepository;

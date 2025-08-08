@@ -3,10 +3,13 @@ package com.db.service;
 import com.db.models.PrescriptionItem;
 import com.db.repository.IPrescriptionItemRepository;
 import com.db.service.interfaces.IPrescriptionItemService;
+import org.springframework.stereotype.Service;
 
+import java.security.Provider;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PrescriptionItemsService implements IPrescriptionItemService {
 
     private IPrescriptionItemRepository prescriptionItemRepository;

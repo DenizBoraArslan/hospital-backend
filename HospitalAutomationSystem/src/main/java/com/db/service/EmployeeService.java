@@ -6,10 +6,12 @@ import com.db.enums.Role;
 import com.db.models.Employee;
 import com.db.repository.IEmployeeRepository;
 import com.db.service.interfaces.IEmployeeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeService implements IEmployeeService {
 
     private IEmployeeRepository employeeRepository;

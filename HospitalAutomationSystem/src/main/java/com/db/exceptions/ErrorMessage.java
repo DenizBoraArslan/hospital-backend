@@ -8,7 +8,7 @@ public class ErrorMessage {
 
     private MessageType messageType;
 
-    public ErrorMessage(MessageType messageType, String token) {
+    public ErrorMessage(MessageType messageType) {
     }
 
     public String prepareErorMessage()
