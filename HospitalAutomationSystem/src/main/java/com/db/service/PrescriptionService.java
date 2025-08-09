@@ -3,8 +3,6 @@ package com.db.service;
 import com.db.models.Doctor;
 import com.db.models.Patient;
 import com.db.models.Prescription;
-import com.db.models.PrescriptionItem;
-import com.db.repository.IPrescriptionItemRepository;
 import com.db.repository.IPrescriptionRepository;
 import com.db.service.interfaces.IPrescriptionService;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,7 @@ import java.util.Optional;
 @Service
 public class PrescriptionService implements IPrescriptionService {
 
-   private IPrescriptionRepository prescriptionRepository ;
+    private IPrescriptionRepository prescriptionRepository;
 
     @Override
     public Optional<Prescription> findPrescriptionByPatient(Patient patient) {

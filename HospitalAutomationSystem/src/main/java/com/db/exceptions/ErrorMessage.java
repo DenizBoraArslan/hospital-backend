@@ -11,13 +11,11 @@ public class ErrorMessage {
     public ErrorMessage(MessageType messageType) {
     }
 
-    public String prepareErorMessage()
-    {
+    public String prepareErorMessage() {
         StringBuilder builder = new StringBuilder();
         builder.append(messageType.getMessage());
-        if(this.ofStatic != null)
-        {
-            builder.append(" :" +ofStatic);
+        if (this.ofStatic != null) {
+            builder.append(" :" + ofStatic);
         }
         return builder.toString();
     }

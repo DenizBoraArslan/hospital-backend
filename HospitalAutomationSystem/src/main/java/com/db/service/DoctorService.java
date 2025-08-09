@@ -5,14 +5,17 @@ import com.db.enums.Gender;
 import com.db.models.Doctor;
 import com.db.repository.IDoctorRepository;
 import com.db.service.interfaces.IDoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DoctorService implements IDoctorService {
 
+    @Autowired
     private IDoctorRepository doctorRepository;
 
     @Override
@@ -21,13 +24,13 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public List<Doctor> findByDoctorFirstName(String doctorFirstName) {
-        return doctorRepository.findByDoctorFirstName(doctorFirstName);
+    public Page<Doctor> findByDoctorFirstName(String doctorFirstName, Pageable pageable) {
+        return doctorRepository.findByDoctorFirstName(doctorFirstName, pageable);
     }
 
     @Override
-    public List<Doctor> findByDoctorLastName(String doctorLastName) {
-        return doctorRepository.findByDoctorLastName(doctorLastName);
+    public Page<Doctor> findByDoctorLastName(String doctorLastName, Pageable pageable) {
+        return doctorRepository.findByDoctorLastName(doctorLastName, pageable);
     }
 
     @Override
@@ -36,12 +39,32 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public List<Doctor> findByGender(Gender gender) {
-        return doctorRepository.findByGender(gender);
+    public Page<Doctor> findByGender(Gender gender, Pageable pageable) {
+        return doctorRepository.findByGender(gender, pageable);
     }
 
     @Override
-    public List<Doctor> findByDepartment(Department department) {
-        return doctorRepository.findByDepartment(department);
+    public Page<Doctor> findByDepartment(Department department, Pageable pageable) {
+        return doctorRepository.findByDepartment(department, pageable);
     }
+
+    @Override
+    public Doctor saveDoctor(Doctor doctor){
+
+        return doctorRepository.save(doctor);
+    }
+
+    @Override
+    public void deleteDoctor(Doctor doctor){
+
+       doctorRepository.delete(doctor);
+    }
+
+    @Override
+    public Doctor updateDoctor(Doctor doctor){
+
+        return doctorRepository.save(doctor);
+    }
+
+
 }

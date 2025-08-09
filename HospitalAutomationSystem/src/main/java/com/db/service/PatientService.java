@@ -2,7 +2,6 @@ package com.db.service;
 
 import com.db.enums.Gender;
 import com.db.models.Patient;
-import com.db.repository.IAppointmentRepository;
 import com.db.repository.IPatientRepository;
 import com.db.service.interfaces.IPatientService;
 import org.springframework.stereotype.Service;

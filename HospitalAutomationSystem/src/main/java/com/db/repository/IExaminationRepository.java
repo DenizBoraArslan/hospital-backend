@@ -14,10 +14,15 @@ import java.util.Optional;
 public interface IExaminationRepository extends JpaRepository<Examination, Long> {
 
     Optional<Examination> findById(long id);
+
     Optional<Examination> findByAppointment(Appointment appointment);
+
     List<Examination> findByDate(LocalDate date);
+
     List<Examination> findByComplaint(String complaint);
+
     List<Examination> findByDiagnosis(String diagnosis);
+
     List<Examination> findByTreatmentPlan(String treatmentPlan);
 
 

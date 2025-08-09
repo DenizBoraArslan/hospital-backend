@@ -2,18 +2,27 @@ package com.db.service.interfaces;
 
 import com.db.enums.AppointmentStatus;
 import com.db.models.Appointment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 public interface IAppointmentService {
 
-    List<Appointment> findAppointmentByPatientId(Long patientId);
-    List<Appointment> findAppointmentByDoctorId(Long doctorId);
-    List<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate);
-    List<Appointment> findAppointmentByStatus(AppointmentStatus status);
-    List<Appointment> findAllAppointments();
+    Page<Appointment> findAppointmentByPatientId(Long patientId, Pageable pageable);
+
+    Page<Appointment> findAppointmentByDoctorId(Long doctorId, Pageable pageable);
+
+    Page<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate, Pageable pageable);
+
+    Page<Appointment> findAppointmentByStatus(AppointmentStatus status, Pageable pageable);
+
+    Page<Appointment> findAllAppointments(Pageable pageable);
+
     Appointment saveAppointment(Appointment appointment);
+
     public void deleteAppointment(Long appointmentId);
+
     public Appointment updateAppointment(Appointment appointment);
 }

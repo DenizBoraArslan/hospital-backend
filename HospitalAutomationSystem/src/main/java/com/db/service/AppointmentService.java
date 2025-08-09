@@ -4,40 +4,43 @@ import com.db.enums.AppointmentStatus;
 import com.db.models.Appointment;
 import com.db.repository.IAppointmentRepository;
 import com.db.service.interfaces.IAppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class AppointmentService implements IAppointmentService {
 
+    @Autowired
     private IAppointmentRepository appointmentRepository;
 
+
     @Override
-    public List<Appointment> findAppointmentByPatientId(Long patientId) {
-        return appointmentRepository.findAppointmentByPatientId(patientId) ;
+    public Page<Appointment> findAppointmentByPatientId(Long patientId, Pageable pageable) {
+        return appointmentRepository.findAppointmentByPatientId(patientId, pageable);
     }
 
     @Override
-    public List<Appointment> findAppointmentByDoctorId(Long doctorId) {
-        return appointmentRepository.findAppointmentByDoctorId(doctorId);
+    public Page<Appointment> findAppointmentByDoctorId(Long doctorId, Pageable pageable) {
+        return appointmentRepository.findAppointmentByDoctorId(doctorId, pageable);
     }
 
     @Override
-    public List<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate) {
-        return appointmentRepository.findAppointmentByAppointmentDate(appointmentDate);
+    public Page<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate, Pageable pageable) {
+        return appointmentRepository.findAppointmentByAppointmentDate(appointmentDate, pageable);
     }
 
     @Override
-    public List<Appointment> findAppointmentByStatus(AppointmentStatus status) {
-        return appointmentRepository.findAppointmentByStatus(status);
+    public Page<Appointment> findAppointmentByStatus(AppointmentStatus status, Pageable pageable) {
+        return appointmentRepository.findAppointmentByStatus(status, pageable);
     }
 
     @Override
-    public List<Appointment> findAllAppointments() {
-        return appointmentRepository.findAll();
+    public Page<Appointment> findAllAppointments(Pageable pageable) {
+        return appointmentRepository.findAll(pageable);
     }
 
     @Override
@@ -47,12 +50,13 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public void deleteAppointment(Long appointmentId) {
-         appointmentRepository.deleteById(appointmentId);
+
+        appointmentRepository.deleteById(appointmentId);
+
     }
 
     @Override
     public Appointment updateAppointment(Appointment appointment) {
         return appointmentRepository.save(appointment);
     }
-
 }

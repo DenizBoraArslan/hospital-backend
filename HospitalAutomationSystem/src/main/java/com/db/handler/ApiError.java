@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApiError<E>{
+public class ApiError<E> {
 
     private Integer status;
 

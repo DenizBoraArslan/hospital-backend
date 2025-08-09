@@ -10,12 +10,19 @@ import java.util.Optional;
 public interface IPatientService {
 
     Optional<Patient> findById(long id);
+
     List<Patient> findByPatientFirstName(String patientFirstName);
+
     List<Patient> findByPatientLastname(String patientLastname);
+
     Optional<Patient> findByPatientNationalIdNumber(String patientNationalIdNumber);
+
     Optional<Patient> findByPatientEmail(String patientEmail);
+
     Optional<Patient> findPatientByPatientAddress(String patientAddress);
+
     List<Patient> findPatientByDateOfBirth(LocalDate dateOfBirth);
+
     List<Patient> findPatientByGender(Gender gender);
 
 }

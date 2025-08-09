@@ -18,5 +18,4 @@ public class PrescriptionItemDTO {
     private Long prescriptionId;
 
 
-
 }

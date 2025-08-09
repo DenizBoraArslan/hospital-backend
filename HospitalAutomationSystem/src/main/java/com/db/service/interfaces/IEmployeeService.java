@@ -11,11 +11,17 @@ import java.util.Optional;
 public interface IEmployeeService {
 
     Optional<Employee> findById(long id);
+
     List<Employee> findByEmployeeFirstName(String employeeFirstName);
+
     List<Employee> findByEmployeeLastName(String employeeLastName);
+
     List<Employee> findByEmployeeEmail(String employeeEmail);
+
     List<Employee> findByDepartment(Department department);
+
     List<Employee> findByGender(Gender gender);
+
     List<Employee> findEmployeeByRole(Role role);
 
 
