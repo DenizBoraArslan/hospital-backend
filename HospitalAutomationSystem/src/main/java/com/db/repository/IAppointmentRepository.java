@@ -8,14 +8,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Repository
 public interface IAppointmentRepository extends JpaRepository<Appointment, Long> {
 
 
-    Page<Appointment> findAppointmentByPatientId(Long patientId, Pageable pageable);
+    Optional<Appointment> findAppointmentByPatientId(Long patient_id);
 
-    Page<Appointment> findAppointmentByDoctorId(Long doctorId, Pageable pageable);
+    Page<Appointment> findAppointmentByDoctorId(Long doctor_id, Pageable pageable);
 
     Page<Appointment> findAppointmentByAppointmentDate(LocalDate appointmentDate, Pageable pageable);
 

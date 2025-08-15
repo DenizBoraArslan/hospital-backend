@@ -5,11 +5,17 @@ import com.db.enums.Gender;
 import com.db.models.Doctor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 
+import javax.print.Doc;
 import java.util.Optional;
 
 public interface IDoctorService {
+
+    Page<Doctor> getAllDoctors(Pageable pageable);
+
+    Page<Doctor> findAllDoctorsByGender(Gender gender, Pageable pageable);
+
+    Page<Doctor> getAllDoctorsByDepartment(Department department, Pageable pageable);
 
     Optional<Doctor> findById(long doctorId);
 
@@ -25,8 +31,9 @@ public interface IDoctorService {
 
     Doctor saveDoctor(Doctor doctor);
 
-    void deleteDoctor(Doctor doctor);
+    public void deleteDoctor(Doctor doctor);
 
-    Doctor updateDoctor(Doctor doctor);
+    public Doctor updateDoctor(Doctor doctor);
+
 
 }

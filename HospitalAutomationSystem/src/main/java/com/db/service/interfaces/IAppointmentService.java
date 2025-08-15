@@ -1,16 +1,19 @@
 package com.db.service.interfaces;
 
 import com.db.enums.AppointmentStatus;
+import com.db.enums.Department;
 import com.db.models.Appointment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 
 public interface IAppointmentService {
 
-    Page<Appointment> findAppointmentByPatientId(Long patientId, Pageable pageable);
+
+    Optional<Appointment> findAppointmentByPatientId(Long patientId);
 
     Page<Appointment> findAppointmentByDoctorId(Long doctorId, Pageable pageable);
 

@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "doctor")
 @Getter
@@ -24,9 +25,10 @@ public class Doctor extends BaseEntity {
     private String doctorEmail;
 
     @Enumerated(EnumType.STRING)
-    private Department department;
+    private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Department department;
+
 
 }

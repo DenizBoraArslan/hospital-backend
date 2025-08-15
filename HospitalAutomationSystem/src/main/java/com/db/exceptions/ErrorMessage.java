@@ -9,7 +9,9 @@ public class ErrorMessage {
     private MessageType messageType;
 
     public ErrorMessage(MessageType messageType) {
+        this.messageType = messageType;
     }
+
 
     public String prepareErorMessage() {
         StringBuilder builder = new StringBuilder();

@@ -12,12 +12,4 @@ public interface IPrescriptionItemRepository extends JpaRepository<PrescriptionI
 
     Optional<PrescriptionItem> findPrescriptionItemById(Long id);
 
-    List<PrescriptionItem> findPrescriptionItemByMedicineName(String medicineName);
-
-    List<PrescriptionItem> findPrescriptionItemByDosage(String dosage);
-
-    List<PrescriptionItem> findPrescriptionItemByDurationInDays(String durationInDays);
-
-    List<PrescriptionItem> findPrescriptionItemByPrescriptionId(Long prescriptionId);
-
 }

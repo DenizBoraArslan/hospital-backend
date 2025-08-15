@@ -4,6 +4,8 @@ import com.db.enums.Department;
 import com.db.enums.Gender;
 import com.db.enums.Role;
 import com.db.models.Employee;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,16 +17,17 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findById(long id);
 
-    List<Employee> findByEmployeeFirstName(String employeeFirstName);
+    Page<Employee> findByEmployeeFirstName(String employeeFirstName, Pageable pageable);
 
-    List<Employee> findByEmployeeLastName(String employeeLastName);
+    Page<Employee> findByEmployeeLastName(String employeeLastName, Pageable pageable);
 
-    List<Employee> findByEmployeeEmail(String employeeEmail);
+    Optional<Employee> findByEmployeeEmail(String employeeEmail);
 
-    List<Employee> findByDepartment(Department department);
+    Page<Employee> findByDepartment(Department department, Pageable pageable);
 
-    List<Employee> findByGender(Gender gender);
+    Page<Employee> findByGender(Gender gender, Pageable pageable);
 
-    List<Employee> findEmployeeByRole(Role role);
+    Page<Employee> findEmployeeByRole(Role role, Pageable pageable);
+
 
 }

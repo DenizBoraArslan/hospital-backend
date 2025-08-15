@@ -1,19 +1,24 @@
 package com.db.service.interfaces;
 
+
 import com.db.models.Doctor;
 import com.db.models.Patient;
 import com.db.models.Prescription;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 public interface IPrescriptionService {
 
-    Optional<Prescription> findPrescriptionByPatient(Patient patient);
+    Page<Prescription> findPrescriptionByPatient(Patient patient, Pageable pageable);
 
-    List<Prescription> findPrescriptionByDoctor(Doctor doctor);
+    Page<Prescription> findPrescriptionByDoctor(Doctor doctor, Pageable pageable);
 
-    List<Prescription> findPrescriptionByPrescriptionDate(LocalDate prescriptionDate);
+    Prescription savePrescription(Prescription prescription);
+
+    void deletePrescription(Long id);
+
+    Prescription updatePrescription(Long id,Prescription prescription);
+
 
 }

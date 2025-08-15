@@ -17,8 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
-
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/appointments")
@@ -29,14 +28,9 @@ public class AppointmentController {
     private final IAppointmentService appointmentService;
 
     @GetMapping("/patient/{patientId}")
-    public ResponseEntity<Page<Appointment>> findByPatientId(@PathVariable Long patientId, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<Optional<Appointment>> findByPatientId(@PathVariable Long patientId) {
 
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Appointment> pageResult = appointmentService.findAppointmentByPatientId(patientId, pageable);
-        if (pageResult.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(pageResult);
+        return ResponseEntity.ok(appointmentService.findAppointmentByPatientId(patientId));
     }
 
     @GetMapping("/doctor/{doctorId}")
@@ -123,6 +117,11 @@ public class AppointmentController {
 
     @DeleteMapping("/delete/{appointmentId}")
     public ResponseEntity<Void> deleteAppointment(@PathVariable Long appointmentId) {
+
+        if (appointmentId == null) {
+            throw new BaseException(new ErrorMessage(MessageType.APPOINTMENT_ID_CANNOT_BE_NULL));
+        }
+
         appointmentService.deleteAppointment(appointmentId);
         return ResponseEntity.noContent().build();
     }
@@ -130,6 +129,9 @@ public class AppointmentController {
     @PutMapping("/update/{appointmentId}")
     public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment, @PathVariable Long appointmentId) {
 
+        if (appointment == null) {
+            throw new BaseException(new ErrorMessage(MessageType.APPOINTMENT_CANNOT_BE_NULL));
+        }
         if (appointment.getId() == null) {
             throw new BaseException(new ErrorMessage(MessageType.APPOINTMENT_CANNOT_BE_NULL));
         }

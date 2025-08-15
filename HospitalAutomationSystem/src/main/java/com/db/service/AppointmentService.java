@@ -9,7 +9,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.lang.Long;
+
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class AppointmentService implements IAppointmentService {
@@ -19,8 +22,8 @@ public class AppointmentService implements IAppointmentService {
 
 
     @Override
-    public Page<Appointment> findAppointmentByPatientId(Long patientId, Pageable pageable) {
-        return appointmentRepository.findAppointmentByPatientId(patientId, pageable);
+    public Optional<Appointment> findAppointmentByPatientId(Long patientId) {
+        return appointmentRepository.findAppointmentByPatientId(patientId);
     }
 
     @Override

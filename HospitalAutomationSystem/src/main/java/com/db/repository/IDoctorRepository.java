@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.Optional;
 
 @Repository
@@ -25,5 +26,9 @@ public interface IDoctorRepository extends JpaRepository<Doctor, Long> {
 
     Page<Doctor> findByDepartment(Department department, Pageable pageable);
 
+    void delete(Doctor doctor);
 
+    Page<Doctor> getAllDoctorsByDepartment(Department department, Pageable pageable);
+
+    Page<Doctor> findAllDoctorsByGender(Gender gender, Pageable pageable);
 }

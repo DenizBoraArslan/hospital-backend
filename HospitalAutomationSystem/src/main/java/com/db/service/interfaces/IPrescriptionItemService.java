@@ -9,12 +9,11 @@ public interface IPrescriptionItemService {
 
     Optional<PrescriptionItem> findPrescriptionItemById(Long id);
 
-    List<PrescriptionItem> findPrescriptionItemByMedicineName(String medicineName);
+    PrescriptionItem save(PrescriptionItem prescriptionItem);
 
-    List<PrescriptionItem> findPrescriptionItemByDosage(String dosage);
+    void delete(Long patientId);
 
-    List<PrescriptionItem> findPrescriptionItemByDurationInDays(String durationInDays);
+    PrescriptionItem update(Long prescriptionItemId, PrescriptionItem prescriptionItem);
 
-    List<PrescriptionItem> findPrescriptionItemByPrescriptionId(Long prescriptionId);
 
 }
