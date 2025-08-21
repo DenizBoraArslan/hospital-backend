@@ -9,6 +9,7 @@ import com.db.models.User;
 import com.db.repository.IUserRepository;
 import com.db.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private IUserRepository userRepository;
@@ -49,7 +53,11 @@ public class UserService implements IUserService {
         user.setFirstName(userDTO.getName());
         user.setLastName(userDTO.getLastName());
         user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
+
+
+        String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
+        user.setPassword(encodedPassword);
+
         user.setRole(Role.PATIENT);
 
         User savedUser = userRepository.save(user);
@@ -64,9 +72,13 @@ public class UserService implements IUserService {
                         new ErrorMessage(MessageType.USER_EMAIL_CANNOT_FOUND)
                 ));
 
+        if(!passwordEncoder.matches(password, user.getPassword())) {
+            throw new BaseException(new ErrorMessage(MessageType.INVALID_PASSWORD));
+        }
 
         return mapToUserResponseDto(user);
     }
+
 
     private UserDTO mapToUserResponseDto(User user) {
         UserDTO userDTO = new UserDTO();

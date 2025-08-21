@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
 
-import java.util.Optional;
 
 @Service
 public class PrescriptionService implements IPrescriptionService {

@@ -1,6 +1,5 @@
 package com.db.models;
 
-
 import com.db.enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
