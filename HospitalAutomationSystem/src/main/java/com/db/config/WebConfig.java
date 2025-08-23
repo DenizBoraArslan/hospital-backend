@@ -1,4 +1,4 @@
-package com.db.config;
+/*package com.db.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,4 +21,4 @@ public class WebConfig {
         };
     }
 
-}
+}*/

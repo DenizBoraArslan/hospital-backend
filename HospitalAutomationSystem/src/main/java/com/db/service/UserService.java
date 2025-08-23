@@ -7,16 +7,20 @@ import com.db.exceptions.ErrorMessage;
 import com.db.exceptions.exepciton_enums.MessageType;
 import com.db.models.User;
 import com.db.repository.IUserRepository;
+import com.db.security.UserDetailsImpl;
 import com.db.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.db.security.UserDetailsImpl;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IUserService  {
 
 
     @Autowired
@@ -33,6 +37,10 @@ public class UserService implements IUserService {
     @Override
     public List<User> findUserByRole(Role role) {
         return userRepository.findUserByRole(role);
+    }
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public UserDTO registerUser(UserDTO userDTO) {
@@ -80,15 +88,23 @@ public class UserService implements IUserService {
         return mapToUserResponseDto(user);
     }
 
-
     private UserDTO mapToUserResponseDto(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
+        userDTO.setUsername(user.getUsername());
         userDTO.setEmail(user.getEmail());
         userDTO.setRole(user.getRole());
         return userDTO;
+    }
+
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        User user =userRepository.findByEmail(email).orElseThrow(()-> new UsernameNotFoundException("email not found :"+email));
+
+        return UserDetailsImpl.build(user);
+
     }
 
 
