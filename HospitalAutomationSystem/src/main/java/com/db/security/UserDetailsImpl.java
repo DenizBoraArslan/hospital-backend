@@ -17,7 +17,7 @@ public class UserDetailsImpl implements UserDetails {
     private Long id;
     private String email;
     private String password;
-    private Collection<? extends GrantedAuthority> authorities; // Bu eksikti!
+    private Collection<? extends GrantedAuthority> authorities;
 
     @Override
     public String getPassword() {
@@ -31,7 +31,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities; // Artık boş liste değil
+        return authorities;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getId(),
                 user.getEmail(),
                 user.getPassword(),
-                Collections.singletonList(authority) // Artık doğru sırada!
+                Collections.singletonList(authority)
         );
     }
 }

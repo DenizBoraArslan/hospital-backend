@@ -28,7 +28,7 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     @Autowired
-    @Lazy  // ← Bu annotation'u ekleyin
+    @Lazy
     private IUserService userService;
 
     @Autowired
@@ -64,7 +64,7 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/auth/**","/api/users/login","/api/users/register").permitAll()
+                        auth.requestMatchers("/api/users/login","/api/users/register").permitAll()
                                 .anyRequest().authenticated()
                 );
 
@@ -77,8 +77,8 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("*"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("localhost:5173"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

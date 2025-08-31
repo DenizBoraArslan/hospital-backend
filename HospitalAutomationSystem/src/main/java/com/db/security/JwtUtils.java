@@ -3,6 +3,7 @@ package com.db.security;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -11,8 +12,9 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    private final String jwtSecret="denizBoraArslanDenizBoraArslan";
-    private final int jwtExpirationMs = 86400000; // 24 saat
+    @Value("${jwt_secret}")
+    private String jwtSecret;
+    private int jwtExpirationMs = 86400000; // 24 saat
 
     private SecretKey getSigningKey(){
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
