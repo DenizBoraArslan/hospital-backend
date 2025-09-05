@@ -1,6 +1,7 @@
 package com.db.models;
 
 import com.db.enums.AppointmentStatus;
+import com.db.enums.InsuranceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "appointment")
@@ -25,10 +27,11 @@ public class Appointment extends BaseEntity {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    private LocalDate appointmentDate;
+    private LocalDateTime appointmentDate;
 
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
+
 
     private String notes;
 
